@@ -40,7 +40,9 @@ export function createMatches(scene: Scene, overlays: ReturnType<typeof createOv
   const wanted = new Map<number, number>(); // body -> the size it wants a full-resolution copy at
   const makeSharp = (i: number, side: number) => wanted.set(i, side);
 
-  const PER_FRAME = 6;
+  // Three a frame, not six. Each is a canvas allocation and two gradients at up to 96 px, and at 120 Hz three still
+  // finishes sixty matches in under a fifth of a second while keeping the per-frame cost under the vsync budget.
+  const PER_FRAME = 3;
   const drawSharp = () => {
     let budget = PER_FRAME;
     for (const [i, side] of wanted) {

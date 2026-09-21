@@ -25,6 +25,29 @@ type Props = {
 export function Settings({ motion, setMotion, noLogo, setNoLogo, icons, setIcons, mostIcons, spent, lit, busy }: Props) {
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
+  const rate = useRef<HTMLSpanElement>(null);
+  const pacing = useRef<HTMLDivElement>(null);
+
+  /**
+   * The frame pacing, read from the floor four times a second and written straight into the span. It is deliberately
+   * not React state: re-rendering this panel every frame to report how smooth the frames are would be its own joke.
+   * Only runs while the panel is open, so it costs nothing the rest of the time.
+   */
+  useEffect(() => {
+    if (!open) return;
+    const show = () => {
+      const floor = (window as unknown as { __floor?: { paced: () => { fps: number; p50: number; p95: number; late: number } } }).__floor;
+      const el = pacing.current;
+      if (!floor || !el) return;
+      const p = floor.paced();
+      if (rate.current) rate.current.textContent = p.fps ? `${p.fps} fps` : "…";
+      el.textContent = p.fps ? `p95 ${p.p95} ms · ${p.late} late` : "measuring";
+      el.dataset.clean = String(p.late === 0); // a late frame is the only thing worth colouring
+    };
+    show();
+    const timer = setInterval(show, 250);
+    return () => clearInterval(timer);
+  }, [open]);
 
   useEffect(() => {
     if (busy) setOpen(false);
@@ -93,6 +116,15 @@ export function Settings({ motion, setMotion, noLogo, setNoLogo, icons, setIcons
             <LiquidToggle on={noLogo[key]} onChange={(on) => setNoLogo({ ...noLogo, [key]: on })} label={`${label} companies with no logo`} />
           </div>
         ))}
+
+        <div className={head}>Frames</div>
+        <div className="border-b border-line px-3.5 py-2.5">
+          <div className="flex items-center justify-between">
+            <span className={name}>Pacing</span>
+            <span ref={rate} className="text-[11px] tabular-nums text-faint" />
+          </div>
+          <div ref={pacing} className="mt-1 text-[10px] tabular-nums tracking-[0.02em] text-faint data-[clean=false]:text-text" />
+        </div>
 
         <div className={head}>Spent</div>
         <div className="flex items-center justify-between px-3.5 py-2.5">

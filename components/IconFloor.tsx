@@ -174,7 +174,26 @@ export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
     const wheel = (mouse as unknown as { mousewheel: EventListener }).mousewheel;
     canvas.removeEventListener("wheel", wheel); // the physics mouse otherwise swallows the wheel
 
-    const stats = { stepMs: 0, drawMs: 0, awake: 0, swaps: 0, gx: 0, gy: 1 }; // read from the console as window.__floor when chasing lag
+    /**
+     * What the frames actually cost, measured where they happen. "Smooth" is not an average: a run at 120 fps with one
+     * 40 ms frame a second reads as a stutter, and the mean hides it completely. So this keeps the last couple of
+     * seconds of frame gaps and reports the median, the 95th, and how many were late enough to see.
+     */
+    const pace: number[] = [];
+    const PACE = 240; // about two seconds at 120 Hz
+    const paced = () => {
+      if (pace.length < 8) return { fps: 0, p50: 0, p95: 0, late: 0 };
+      const sorted = [...pace].sort((a, b) => a - b);
+      const at = (p: number) => sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * p))];
+      const mid = at(0.5);
+      return {
+        fps: Math.round(1000 / mid),
+        p50: +mid.toFixed(1),
+        p95: +at(0.95).toFixed(1),
+        late: pace.filter((d) => d > mid * 1.6).length, // frames that missed their slot by enough to be seen
+      };
+    };
+    const stats = { stepMs: 0, drawMs: 0, awake: 0, swaps: 0, gx: 0, gy: 1, paced }; // read from the console as window.__floor when chasing lag
     (window as unknown as { __floor?: unknown }).__floor = Object.assign(stats, createDebug(scene));
     const overlays = createOverlays(scene, { labels: () => labelRefs.current, tip: () => tipRef.current, frame: () => frameRef.current, clip: () => clipRef.current, content: () => contentRef.current, beam: () => beamRef.current });
     const swaps = createSwaps(scene, (i) => drag.body === bodies[i], stats);
@@ -182,6 +201,8 @@ export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
     const matches = createMatches(scene, overlays, swaps, loadImage);
     Object.assign(stats, { holes: () => matches.holes() });
 
+    const SUB = STEP / SUBSTEPS; // one substep of simulated time, the unit the world actually advances by
+    const CATCH_UP = 4; // most substeps in one frame, so a stall cannot cascade into a long freeze
     let raf = 0;
     let frames = 0;
     let last = performance.now();
@@ -273,6 +294,11 @@ export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
 
     const frame = (now: number) => {
       raf = requestAnimationFrame(frame);
+      const raw = now - last;
+      if (raw > 0 && raw < 500) {
+        pace.push(raw); // a gap over half a second is the tab being parked, not a dropped frame
+        if (pace.length > PACE) pace.shift();
+      }
       const elapsed = Math.min(now - last, 120);
       last = now;
       scene.now = now;
@@ -287,21 +313,24 @@ export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
           poured++;
           scene.dirty = true;
         }
+        // The substeps are spread across frames rather than fired in bursts. A 1/60 s step is three 1/180 s substeps,
+        // so on a 120 Hz screen the old loop ran three of them on one frame and none on the next: half the frames did
+        // all the work and the pacing alternated visibly, about 6 ms then 10.5 ms, even though the work itself is
+        // under a millisecond. Draining one substep at a time gives 1, 1, 2, 1, 1, 2 instead of 3, 0, 3, 0. The
+        // simulation sees exactly the same fixed 1/180 s steps it always did; only when they arrive has changed.
         acc += elapsed;
-        let steps = 0;
+        let ran = 0;
         const t0 = performance.now();
-        while (acc >= STEP && steps < 3) {
-          applyGrowth(scene);
-          for (let k = 0; k < SUBSTEPS; k++) {
-            applyHoldForces(scene, STEP / SUBSTEPS);
-            bounds.limitSpeeds(STEP / SUBSTEPS);
-            Matter.Engine.update(engine, STEP / SUBSTEPS);
-          }
-          acc -= STEP;
-          steps++;
+        while (acc >= SUB && ran < CATCH_UP) {
+          applyGrowth(scene, SUB / STEP);
+          applyHoldForces(scene, SUB);
+          bounds.limitSpeeds(SUB);
+          Matter.Engine.update(engine, SUB);
+          acc -= SUB;
+          ran++;
         }
-        if (steps) stats.stepMs += ((performance.now() - t0) / steps - stats.stepMs) * 0.1;
-        if (acc > STEP * 3) acc = 0; // never try to catch up after a stall: slow motion beats a freeze
+        if (ran) stats.stepMs += ((performance.now() - t0) / ran - stats.stepMs) * 0.1; // now per substep
+        if (acc > SUB * CATCH_UP) acc = 0; // never try to catch up after a stall: slow motion beats a freeze
       }
       swaps.run(now);
       bounds.patrol(++frames);

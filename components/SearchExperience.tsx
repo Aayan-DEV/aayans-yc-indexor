@@ -26,8 +26,8 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
   const bar = useRef<HTMLDivElement>(null);
   // How many of the sampled logos are actually drawn. Changing it rebuilds the pile, so it is committed a moment after
   // the slider stops rather than on every pixel of the drag.
-  const [pile, setPile] = useState(600);
-  const [sliding, setSliding] = useState(600);
+  const [pile, setPile] = useState(500);
+  const [sliding, setSliding] = useState(500);
   useEffect(() => {
     const timer = setTimeout(() => {
       setPile(sliding);

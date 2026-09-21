@@ -103,7 +103,7 @@ export function park(scene: Scene, i: number) {
 }
 
 /** Ease every grown icon toward the size it should be right now, scaling its rigid body along with it. */
-export function applyGrowth(scene: Scene) {
+export function applyGrowth(scene: Scene, part = 1) {
   const { bodies, holds, grown, sharp } = scene;
   grown.forEach((scale, i) => {
     const body = bodies[i];
@@ -115,7 +115,9 @@ export function applyGrowth(scene: Scene) {
       const late = Math.max(0, (progress - 0.3) / 0.7); // stay small while still inside the pile
       want = 1 + (hold.scale - 1) * late * late * (3 - 2 * late);
     }
-    let next = scale + (want - scale) * 0.12;
+    // 0.12 of the way there per 1/60 s. `part` is how much of one of those this call covers, so the easing is the same
+    // whether it arrives as one call or as three, which is what lets the substeps be spread across frames.
+    let next = scale + (want - scale) * (part >= 1 ? 0.12 : 1 - (1 - 0.12) ** part);
     if (Math.abs(want - next) < 0.004) next = want;
     if (next !== scale) {
       Matter.Sleeping.set(body, false);
