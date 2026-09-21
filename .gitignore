@@ -41,12 +41,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large local artefacts: the Core ML models, the compiled Swift helpers, and the vectors and tags
-# that `npm run atlas` and the prep scripts produce
-/models/
-/native/coreml_embed
-/data/library.json
-native/motion
-/data/letters.json
-/data/meta_vectors_v3.f32
-/data/jev_tags.json
+# Everything the app needs to run is committed: the logos, the vectors, the tags and the models.
+# Clone it and it works. Only build output, dependencies and real keys stay out.
