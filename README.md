@@ -4,7 +4,7 @@ Describe a startup the way you half remember it. MobileCLIP finds it, and Jev br
 
 ## How it works
 
-**MobileCLIP-S0 on Core ML does the seeing, Jev is the tie-breaker.** Measured on this Mac (M1 Pro), full numbers in `../experiments/embed_bench/RESULTS.md`.
+**MobileCLIP-S0 on Core ML does the seeing, Jev is the tie-breaker.** Numbers throughout were measured on an Apple Silicon MacBook (M1 Pro); treat them as the shape of the result rather than a promise about your machine.
 
 1. **Any image dropped into `public/icons/` is searchable about 50 ms later.** `lib/library.ts` watches the folder. A warm Swift helper
    (`native/coreml_embed.swift`, built with `npm run build:native`) embeds the image with Apple's MobileCLIP-S0 on Core ML (5 ms) and names
@@ -22,7 +22,6 @@ Describe a startup the way you half remember it. MobileCLIP finds it, and Jev br
    `app/library/[file]`, which only serves files the library knows about.
 
 Models live in `models/` (114 MB, git-ignored): `mobileclip_s0_image.mlpackage` and `mobileclip_s0_text.mlpackage` from `apple/coreml-mobileclip`.
-The earlier pixel-math-only indexers are kept in `indexer/` for reference and are no longer used at runtime.
 
 ## Reliability
 
@@ -37,15 +36,27 @@ The earlier pixel-math-only indexers are kept in `indexer/` for reference and ar
 npm run dev
 ```
 
-Rebuild the index (needs the torch env from `../experiments/jev_vague_match/.venv`):
+Everything the app needs at runtime is committed: all 6,241 logos in `public/icons`, their vectors and metadata in `data/`,
+the packed sprite sheet in `public/atlas`, and the Core ML models in `models/`. There is no index to build before it runs.
+
+Rebuild the packed sprite sheet after adding companies:
 
 ```bash
-cd indexer && ../../experiments/jev_vague_match/.venv/bin/python build_index.py
+npm run atlas
 ```
 
 ## Config
 
-`TYPE_SAFE_KEY` and `VERCEL_API_KEY` are read from the parent project's `.env`. Set `JEV_PRIMARY=vercel` to try the gateway first; the default is the batch endpoint because it judges all icons in one request.
+Copy `.env.example` to `.env.local` and fill in `TYPE_SAFE_KEY`. Next loads `.env.local` on its own; a `.env` one
+directory up is read as a fallback, for the case where this sits beside sibling projects that share one key file.
+Without the key every search falls back to a local scorer and answers `degraded: true`.
+
+| | |
+| --- | --- |
+| `TYPE_SAFE_KEY` | required, from typesafe.ai |
+| `VERCEL_API_KEY` / `AI_GATEWAY_API_KEY` | optional fallbacks |
+| `JEV_PRIMARY` | `vercel` tries the gateway first; the default `batch` judges every finalist in one request |
+| `JEV_DETAIL` | characters of each company's description sent per finalist, default 420 |
 
 ## Interface
 
@@ -72,7 +83,7 @@ cd indexer && ../../experiments/jev_vague_match/.venv/bin/python build_index.py
 - **Motion switch** (top left, `components/ui/LiquidToggle.tsx`). A liquid toggle with no dependencies: the thumb on one spring, a smaller drop on a second spring that chases it, and an SVG goo filter (blur, then an alpha threshold) that melts them into one shape. It can be pressed or dragged. Off closes the sensor feed and restores ordinary gravity; the choice is kept in `localStorage`.
 - **Probability labels.** Each match carries its probability in a small pill above it. The pills are plain DOM moved from the frame loop (no React state) and fade in on arrival and out over 420 ms.
 - **Enter searches.** Only Enter or the orb runs a search. Typing lets the matches fall back into the pile and the labels fade out.
-- **Tilt and shake the MacBook** (`native/motion.swift`, `lib/motion.ts`, `components/floor/tilt.ts`). Apple Silicon MacBooks have an accelerometer and gyro behind the sensor processing unit. No public API or browser event exposes them, but they are HID devices (vendor page 0xFF00, usage 3 and 9; the lid angle is page 0x20, usage 138). The Swift helper wakes the driver, reads about 1,600 reports a second (22 bytes, x/y/z as int32 at bytes 6/10/14, divided by 65,536), and streams 60 averaged samples a second as server-sent events on `127.0.0.1:3917`, only to pages served from localhost. On this M1 Pro it opens without root. `instrumentation.ts` starts it with the server (build it once: `npm run build:motion`). The page turns it into gravity: the slow part of the signal is where gravity points, jolts are exaggerated 2.5x, the lid angle says how much of "down" lies in the screen plane, and turning the laptop flat on the desk pulls sideways. Sleeping icons are woken when gravity has moved by 0.1 g. Without the helper nothing changes. If left and right are mirrored, set `FLIP_X` in `tilt.ts` to -1.
+- **Tilt and shake the MacBook** (`native/motion.swift`, `lib/motion.ts`, `components/floor/tilt.ts`). Apple Silicon MacBooks have an accelerometer and gyro behind the sensor processing unit. No public API or browser event exposes them, but they are HID devices (vendor page 0xFF00, usage 3 and 9; the lid angle is page 0x20, usage 138). The Swift helper wakes the driver, reads about 1,600 reports a second (22 bytes, x/y/z as int32 at bytes 6/10/14, divided by 65,536), and streams 60 averaged samples a second as server-sent events on `127.0.0.1:3917`, only to pages served from localhost. It usually opens without root; some Macs need sudo. `instrumentation.ts` starts it with the server (build it once: `npm run build:motion`). The page turns it into gravity: the slow part of the signal is where gravity points, jolts are exaggerated 2.5x, the lid angle says how much of "down" lies in the screen plane, and turning the laptop flat on the desk pulls sideways. Sleeping icons are woken when gravity has moved by 0.1 g. Without the helper nothing changes. If left and right are mirrored, set `FLIP_X` in `tilt.ts` to -1.
 - **Nothing overlaps, nothing escapes** (`components/floor/bounds.ts`, `forces.ts`). Each 1/60 s step is three substeps with 4 position passes each; a speed cap keeps any icon from covering more than 45% of its size between two collision checks (that is what let hard hits leave icons inside one another); four 400 px walls, the top one closing once the pile has poured in; the pointer cannot drag past the edge; a once-a-second patrol brings back anything that still got out. Check it from the console: `__floor.jolt()` throws the whole pile at full strength, `__floor.overlaps()` must then report `{ deep: 0, outside: 0 }`.
 - **One sheet, not a thousand images** (`scripts/build-atlas.mjs`, `lib/atlas.ts`, `components/floor/atlas.ts`). The pile used to fetch one PNG per icon through the `/library/[file]` Node route: at 1,000 icons that is 1,000 requests, and images were still arriving **17 seconds** after the page opened. They are now packed into one 3168x1650 lossless WebP, 2.68 MB for 1,200 logos at 64 px each, served immutable. One request, 83 ms to decode, and it is a quarter the bytes of the PNGs it replaces. Run `npm run atlas` after adding companies to the library.
 - **One canvas, not a thousand canvases.** Every pile icon used to get its own offscreen canvas, so a frame meant switching source texture a thousand times, and a thousand full-size images stayed decoded in memory. They now share one atlas canvas with a cell per body, each baked at exactly the device pixels it is drawn at, so a settled icon lands 1:1 on screen with no resampling at all and a frame is a thousand blits out of one texture. Cells have a 2 px transparent gutter, because a rotating icon samples a pixel or two past its own edge. A resize rebuilds the one canvas instead of a thousand. Full-size pictures are loaded only for the handful of matches that are actually enlarged, and are dropped again when a match retires.
@@ -90,7 +101,7 @@ cd indexer && ../../experiments/jev_vague_match/.venv/bin/python build_index.py
 
 ## YC company logos and their written info
 
-`../yc_companies/` holds all 6,241 YC companies (Summer 2005 to Winter 2027) parsed from the YC directory by `parse.py`: `companies.json` and `companies.csv`
+The prep pipeline that produced `data/companies.json` lives outside this repo and is not needed to run it. It parsed all 6,241 YC companies (Summer 2005 to Winter 2027) parsed from the YC directory by `parse.py`: `companies.json` and `companies.csv`
 (slug, name, tagline, location, batch, season, year, industry, subindustry, url, logo_url, logo_file) plus `logos/<slug>.png` for the 5,616 that have a logo
 (`download.py`, safe to re-run; one logo, `brainhi`, returns 403 at the source). The 624 companies without a logo get a lettered tile
 (`placeholders.py` writes `placeholders/<slug>.png`), so every company is searchable. In the app all 6,241 are `public/icons/yc_<slug>.png`, and
@@ -294,7 +305,7 @@ looks like free money. It is not: on the long-tail requests the benchmark cannot
 Whitespace lands 11th with it and 22nd without. It is kept, and `JEV_DETAIL` re-runs that measurement. Colours are now
 only sent when the request mentions one, which was pure waste otherwise.
 
-**Well-known companies.** `../yc_companies/enrich.py` merges YC's open data (`yc_oss_all.json`, 10.5 MB from `yc-oss.github.io/api/companies/all.json`):
+**Well-known companies.** The prep step merges YC's open data (`yc_oss_all.json`, 10.5 MB from `yc-oss.github.io/api/companies/all.json`):
 long description, tags, team size, status and the top-company flag, and it added the one company the directory pages never listed (Y Combinator itself).
 Words and meaning-vectors (`data/meta_vectors_v2.f32`) now include tags and the start of the description. Two things make famous companies show up:
 

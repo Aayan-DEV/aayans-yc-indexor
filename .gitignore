@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files. .env.example is the template and is committed; real keys never are.
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -40,12 +41,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local vision models and the compiled helper
+# large local artefacts: the Core ML models, the compiled Swift helpers, and the vectors and tags
+# that `npm run atlas` and the prep scripts produce
 /models/
 /native/coreml_embed
 /data/library.json
 native/motion
 /data/letters.json
-/removed-icons
 /data/meta_vectors_v3.f32
 /data/jev_tags.json

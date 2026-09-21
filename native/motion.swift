@@ -2,7 +2,7 @@
 //
 // Apple Silicon MacBooks have a motion sensor behind the sensor processing unit. No public API exposes it and
 // browsers get no motion events on macOS, but it shows up as HID devices (vendor page 0xFF00: usage 3 = accel,
-// usage 9 = gyro; sensor page 0x20, usage 138 = lid angle). On this M1 Pro they open without root; other Macs may need sudo.
+// usage 9 = gyro; sensor page 0x20, usage 138 = lid angle). They usually open without root; some Macs need sudo.
 //
 //   npm run build:motion && native/motion
 //
@@ -119,7 +119,7 @@ say("streaming on http://127.0.0.1:\(PORT)/motion")
 var ticks = 0
 Timer.scheduledTimer(withTimeInterval: 1.0 / 60.0, repeats: true) { _ in
     ticks += 1
-    if ticks == 120 { say(reports == 0 ? "no sensor reports after 2 s: try sudo native/motion, or this Mac does not stream them" : "sensor is reporting (\(reports / 2) reports/s)") }
+    if ticks == 120 { say(reports == 0 ? "no sensor reports after 2 s: try sudo native/motion, or this machine does not stream them" : "sensor is reporting (\(reports / 2) reports/s)") }
     if accel.n > 0 { lastAccel = [accel.x / accel.n, accel.y / accel.n, accel.z / accel.n] } else if reports == 0 { return }
     let w = gyro.n > 0 ? [gyro.x / gyro.n, gyro.y / gyro.n, gyro.z / gyro.n] : [0, 0, 0]
     accel = (0, 0, 0, 0)

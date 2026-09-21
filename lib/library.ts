@@ -65,7 +65,7 @@ function remove(file: string) {
 
 async function boot() {
   try {
-    state.titles = JSON.parse(await fs.promises.readFile(path.join(process.cwd(), "indexer", "titles.json"), "utf8"));
+    state.titles = JSON.parse(await fs.promises.readFile(path.join(process.cwd(), "data", "titles.json"), "utf8"));
   } catch {}
   try {
     for (const item of JSON.parse(await fs.promises.readFile(SAVE, "utf8")) as LibraryItem[]) if (item.hash) state.items.set(item.file, { ...item, src: srcFor(item.file) }); // entries saved before hashing existed are re-indexed
