@@ -2,7 +2,7 @@
 
 import Matter from "matter-js";
 import { BorderBeam } from "border-beam";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { createAtlas, type Sheet } from "./floor/atlas";
 import { createBounds } from "./floor/bounds";
 import { createDebug } from "./floor/debug";
@@ -53,7 +53,12 @@ const loadImage = (src: string) => {
  * This file owns the world, the frame loop and the drawing. The springs are in floor/forces, the labels in
  * floor/overlays, and the images popping in and out in floor/swaps.
  */
-export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
+/**
+ * Memoised, and every one of its props is stable on purpose. Typing re-renders the page on each keystroke, and without
+ * this the floor re-rendered with it: 180 label elements reconciled, and, because their ref was an inline arrow, 180
+ * refs detached and re-attached, thirteen times a second. That alone was most of the jank while typing.
+ */
+export const IconFloor = memo(function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const beamRef = useRef<HTMLDivElement>(null);
   const tipRef = useRef<HTMLDivElement>(null);
@@ -61,6 +66,9 @@ export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
   const clipRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const labelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  // One callback per slot, made once. An inline arrow here is a new identity every render, which makes React drop and
+  // re-take all 180 refs each time.
+  const setLabel = useMemo(() => Array.from({ length: MOST }, (_, k) => (el: HTMLDivElement | null) => void (labelRefs.current[k] = el)), []);
   const [iconSize, setIconSize] = useState(96);
 
   useEffect(() => {
@@ -444,9 +452,7 @@ export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
           {Array.from({ length: MOST }, (_, k) => (
             <div
               key={k}
-              ref={(el) => {
-                labelRefs.current[k] = el;
-              }}
+              ref={setLabel[k]}
               className="match-label absolute left-0 top-0 rounded-[4px] border border-line-strong bg-panel px-2 py-0.5 text-[11.5px] font-medium tabular-nums tracking-[-0.01em] text-muted data-[best=true]:text-text data-[small=true]:px-1.5 data-[small=true]:text-[10px]"
               style={{ opacity: 0 }}
             />
@@ -464,4 +470,4 @@ export function IconFloor({ sources, cells, sheet, apiRef, onReady }: Props) {
       </div>
     </>
   );
-}
+});

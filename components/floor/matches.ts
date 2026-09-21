@@ -119,7 +119,9 @@ export function createMatches(scene: Scene, overlays: ReturnType<typeof createOv
    * back quietly, asleep and down among the others, rather than dropped from where it was: a hundred icons raining down
    * the page while you scroll is exactly the mess this is here to avoid.
    */
-  const RETIRE_AT_ONCE = 8; // a flick can scroll past a dozen rows in a frame; giving them all back at once is the spike
+  const RETIRE_AT_ONCE = 6; // a flick can scroll past a dozen rows in a frame; giving them all back at once is the spike
+  const QUIET = 140; // ms of stillness before icons are handed back, so a moving scroll never pays for it
+  const SPARE_ENOUGH = 40; // unless the pile is running this low on lendable icons, in which case hand some back now
   const retire = () => {
     if (!shown) return;
     let budget = RETIRE_AT_ONCE;
@@ -294,6 +296,7 @@ export function createMatches(scene: Scene, overlays: ReturnType<typeof createOv
   // events arrived. `scene.scroll` is still exact the instant the wheel turns; only the work waits.
   let scrolledBy = 0;
   let scrollPending = false;
+  let scrolledAt = -1e9; // when the wheel last turned
 
   return {
     release,
@@ -305,11 +308,20 @@ export function createMatches(scene: Scene, overlays: ReturnType<typeof createOv
         if (shown) {
           overlays.scroll(scene.scroll, shown.layout.scrollMost);
           scrollIcons(scrolledBy);
-          retire();
           fill(false);
         }
         scrolledBy = 0;
       }
+      /**
+       * Handing an icon back is the expensive half of scrolling: it is rescaled, dropped into the pile, has its cell of
+       * the atlas redrawn, and wakes every neighbour so the pile makes room for it. Doing that while the wheel is still
+       * turning had the pile permanently churning, four and a half times the physics cost and eighty-odd late frames in
+       * a hard scroll. None of it is urgent, because 500 icons in the pile is far more than the eighty-odd cells in
+       * view need. So it waits for the scroll to go quiet, unless the spare icons are genuinely running out.
+       */
+      // The running-low check is itself a scan of the pile, so it happens a few times a second, not every frame.
+      const quiet = scene.now - scrolledAt > QUIET;
+      if (shown && (quiet || (frame % 12 === 0 && spareIcons().length < SPARE_ENOUGH))) retire();
       drain(scene.now);
       if (wanted.size) drawSharp();
       // A cell whose icon never arrived, or that had none to spare, is queued again a few times a second.
@@ -350,6 +362,7 @@ export function createMatches(scene: Scene, overlays: ReturnType<typeof createOv
       if (to === scene.scroll) return true;
       scrolledBy += to - scene.scroll;
       scene.scroll = to;
+      scrolledAt = scene.now;
       scrollPending = true; // the frame loop moves the icons and the labels together
       return true;
     },

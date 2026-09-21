@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { LiquidToggle } from "./LiquidToggle";
 
 export type NoLogo = { active: boolean; acquired: boolean; closed: boolean };
@@ -22,7 +22,7 @@ type Props = {
  * Everything adjustable, folded away behind one cog so the page is only the pile and the search bar. It opens on a
  * click and closes on a click anywhere else or on Escape.
  */
-export function Settings({ motion, setMotion, noLogo, setNoLogo, icons, setIcons, mostIcons, spent, lit, busy }: Props) {
+export const Settings = memo(function Settings({ motion, setMotion, noLogo, setNoLogo, icons, setIcons, mostIcons, spent, lit, busy }: Props) {
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   const rate = useRef<HTMLSpanElement>(null);
@@ -136,4 +136,4 @@ export function Settings({ motion, setMotion, noLogo, setNoLogo, icons, setIcons
       </div>
     </div>
   );
-}
+});
