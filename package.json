@@ -3,17 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:native": "swiftc -O native/coreml_embed.swift -o native/coreml_embed",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:motion": "swiftc -O native/motion.swift -o native/motion",
+    "atlas": "node scripts/build-atlas.mjs"
   },
   "dependencies": {
+    "@huggingface/transformers": "^4.3.0",
+    "border-beam": "^1.3.0",
+    "geist": "^1.7.2",
+    "matter-js": "^0.20.0",
+    "metal-fx": "^2.0.10",
     "next": "16.3.5",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "thinking-orbs": "^0.3.1",
+    "voice-glow": "^0.2.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/matter-js": "^0.20.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

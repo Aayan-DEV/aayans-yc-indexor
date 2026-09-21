@@ -1,0 +1,486 @@
+{
+ "note": "Automatic measurements of one app icon, made by simple pixel math. No person or AI described it, and it can miss things.",
+ "icons": [
+  {
+   "id": "1263",
+   "slug": "shop",
+   "title": "Shop: Track, Pay, Discover",
+   "src": "/icons/1263_shop.webp",
+   "colors": [
+    "blue-purple (indigo)",
+    "white"
+   ],
+   "background": "purple",
+   "colorText": "Colors by area: blue-purple (indigo) 90%, white 7%. The background (outer edge) is blue-purple (indigo). The middle of the icon is mostly blue-purple (indigo) and white. The icon is medium brightness.",
+   "shapeText": "On a purple background there is a foreground covering 12% of the icon, colored white 64%, purple 36%. It is made of 4 separate pieces. The foreground spans 81% of the width and 33% of the height, centered at 49% across and 50% down. The shape is elongated horizontally. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: blue-purple (indigo) 90%, white 7%. The background (outer edge) is blue-purple (indigo). The middle of the icon is mostly blue-purple (indigo) and white. The icon is medium brightness. On a purple background there is a foreground covering 12% of the icon, colored white 64%, purple 36%. It is made of 4 separate pieces. The foreground spans 81% of the width and 33% of the height, centered at 49% across and 50% down. The shape is elongated horizontally. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1264",
+   "slug": "norwegian-travel-assistant",
+   "title": "Norwegian Travel Assistant",
+   "src": "/icons/1264_norwegian-travel-assistant.webp",
+   "colors": [
+    "red",
+    "white"
+   ],
+   "background": "red",
+   "colorText": "Colors by area: red 88%, white 10%. The background (outer edge) is red. The middle of the icon is mostly red and white. The icon is medium brightness.",
+   "shapeText": "On a red background there is a foreground covering 14% of the icon, colored white 78%, red 22%. It is made of 2 separate pieces. The foreground spans 78% of the width and 34% of the height, centered at 48% across and 50% down. The shape is elongated horizontally. It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: red 88%, white 10%. The background (outer edge) is red. The middle of the icon is mostly red and white. The icon is medium brightness. On a red background there is a foreground covering 14% of the icon, colored white 78%, red 22%. It is made of 2 separate pieces. The foreground spans 78% of the width and 34% of the height, centered at 48% across and 50% down. The shape is elongated horizontally. It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1269",
+   "slug": "tomb-of-the-mask",
+   "title": "Tomb of the Mask+",
+   "src": "/icons/1269_tomb-of-the-mask.webp",
+   "colors": [
+    "black",
+    "dark green",
+    "yellow"
+   ],
+   "background": "black",
+   "colorText": "Colors by area: black 67%, dark green 20%, yellow 11%. The background (outer edge) is black. The middle of the icon is mostly yellow and black. The icon is dark overall.",
+   "shapeText": "On a black background there is a foreground covering 33% of the icon, colored green 64%, yellow 36%. It is made of 4 separate pieces. The foreground fills the whole icon, centered at 49% across and 49% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: black 67%, dark green 20%, yellow 11%. The background (outer edge) is black. The middle of the icon is mostly yellow and black. The icon is dark overall. On a black background there is a foreground covering 33% of the icon, colored green 64%, yellow 36%. It is made of 4 separate pieces. The foreground fills the whole icon, centered at 49% across and 49% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1275",
+   "slug": "unrot",
+   "title": "Unrot: Earn your Screen Time",
+   "src": "/icons/1275_unrot.webp",
+   "colors": [
+    "pale red",
+    "white",
+    "dark blue-purple (indigo)"
+   ],
+   "background": "red",
+   "colorText": "Colors by area: pale red 74%, white 9%, dark blue-purple (indigo) 7%, red 5%. The background (outer edge) is pale red. The middle of the icon is mostly pale red and white. The icon is light overall.",
+   "shapeText": "On a red background there is a foreground covering 15% of the icon, colored blue 60%, white 22%. It is made of 5 separate pieces. The foreground spans 91% of the width and 89% of the height, centered at 49% across and 49% down. The shape is elongated horizontally. It is symmetric left-right. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: pale red 74%, white 9%, dark blue-purple (indigo) 7%, red 5%. The background (outer edge) is pale red. The middle of the icon is mostly pale red and white. The icon is light overall. On a red background there is a foreground covering 15% of the icon, colored blue 60%, white 22%. It is made of 5 separate pieces. The foreground spans 91% of the width and 89% of the height, centered at 49% across and 49% down. The shape is elongated horizontally. It is symmetric left-right. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1277",
+   "slug": "miro",
+   "title": "Miro: your visual workspace",
+   "src": "/icons/1277_miro.webp",
+   "colors": [
+    "yellow-orange",
+    "black",
+    "brown"
+   ],
+   "background": "yellow",
+   "colorText": "Colors by area: yellow-orange 71%, black 21%, brown 4%. The background (outer edge) is yellow-orange. The middle of the icon is mostly black and yellow-orange. The icon is medium brightness.",
+   "shapeText": "On a yellow background there is a foreground covering 27% of the icon, colored black 82%, yellow 18%. It is made of 1 separate piece. The foreground spans 62% of the width and 62% of the height, centered at 50% across and 47% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: yellow-orange 71%, black 21%, brown 4%. The background (outer edge) is yellow-orange. The middle of the icon is mostly black and yellow-orange. The icon is medium brightness. On a yellow background there is a foreground covering 27% of the icon, colored black 82%, yellow 18%. It is made of 1 separate piece. The foreground spans 62% of the width and 62% of the height, centered at 50% across and 47% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1281",
+   "slug": "wavelength",
+   "title": "Wavelength",
+   "src": "/icons/1281_wavelength.webp",
+   "colors": [
+    "pale red",
+    "red",
+    "green-blue (teal)"
+   ],
+   "background": "red",
+   "colorText": "Colors by area: pale red 33%, red 25%, green-blue (teal) 15%, orange 14%. The background (outer edge) is pale red. The middle of the icon is mostly orange and red. The icon is medium brightness.",
+   "shapeText": "On a red background there is a foreground covering 62% of the icon, colored red 43%, teal 24%, orange 23%. It is made of 2 separate pieces. The foreground spans 78% of the width and 94% of the height, centered at 50% across and 57% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid.",
+   "description": "Colors by area: pale red 33%, red 25%, green-blue (teal) 15%, orange 14%. The background (outer edge) is pale red. The middle of the icon is mostly orange and red. The icon is medium brightness. On a red background there is a foreground covering 62% of the icon, colored red 43%, teal 24%, orange 23%. It is made of 2 separate pieces. The foreground spans 78% of the width and 94% of the height, centered at 50% across and 57% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid."
+  },
+  {
+   "id": "1283",
+   "slug": "monument-valley-3",
+   "title": "Monument Valley 3",
+   "src": "/icons/1283_monument-valley-3.webp",
+   "colors": [
+    "yellow-orange",
+    "pale yellow-orange",
+    "purple"
+   ],
+   "background": "yellow",
+   "colorText": "Colors by area: yellow-orange 46%, pale yellow-orange 18%, purple 9%, pale yellow 7%, yellow 4%. The background (outer edge) is yellow-orange. The middle of the icon is mostly purple and yellow-orange. The icon is light overall.",
+   "shapeText": "On a yellow background there is a foreground covering 50% of the icon, colored yellow 50%, purple 25%. It is made of 1 separate piece. The foreground fills the whole icon, centered at 56% across and 61% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: yellow-orange 46%, pale yellow-orange 18%, purple 9%, pale yellow 7%, yellow 4%. The background (outer edge) is yellow-orange. The middle of the icon is mostly purple and yellow-orange. The icon is light overall. On a yellow background there is a foreground covering 50% of the icon, colored yellow 50%, purple 25%. It is made of 1 separate piece. The foreground fills the whole icon, centered at 56% across and 61% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1295",
+   "slug": "sneaky-sasquatch",
+   "title": "Sneaky Sasquatch",
+   "src": "/icons/1295_sneaky-sasquatch.webp",
+   "colors": [
+    "orange",
+    "green",
+    "dark green"
+   ],
+   "background": "green",
+   "colorText": "Colors by area: orange 27%, green 14%, dark green 13%, yellow-green (lime) 13%, brown 13%, yellow-orange 6%. The background (outer edge) is green. The middle of the icon is mostly orange and dark yellow-green (lime). The icon is medium brightness.",
+   "shapeText": "On a green background there is a foreground covering 56% of the icon, colored orange 49%, brown 24%, yellow 22%. It is made of 2 separate pieces. The foreground fills the whole icon, centered at 45% across and 57% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: orange 27%, green 14%, dark green 13%, yellow-green (lime) 13%, brown 13%, yellow-orange 6%. The background (outer edge) is green. The middle of the icon is mostly orange and dark yellow-green (lime). The icon is medium brightness. On a green background there is a foreground covering 56% of the icon, colored orange 49%, brown 24%, yellow 22%. It is made of 2 separate pieces. The foreground fills the whole icon, centered at 45% across and 57% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1305",
+   "slug": "kickstarter",
+   "title": "Kickstarter: Projects You Love",
+   "src": "/icons/1305_kickstarter.webp",
+   "colors": [
+    "green",
+    "white"
+   ],
+   "background": "green",
+   "colorText": "Colors by area: green 61%, white 37%. The background (outer edge) is green. The middle of the icon is mostly white. The icon is medium brightness.",
+   "shapeText": "On a green background there is a foreground covering 40% of the icon, colored white 93%. It is made of 1 separate piece. The foreground spans 62% of the width and 72% of the height, centered at 48% across and 49% down. The shape is compact, about as wide as it is tall. It is symmetric left-right and top-bottom. The shape is solid.",
+   "description": "Colors by area: green 61%, white 37%. The background (outer edge) is green. The middle of the icon is mostly white. The icon is medium brightness. On a green background there is a foreground covering 40% of the icon, colored white 93%. It is made of 1 separate piece. The foreground spans 62% of the width and 72% of the height, centered at 48% across and 49% down. The shape is compact, about as wide as it is tall. It is symmetric left-right and top-bottom. The shape is solid."
+  },
+  {
+   "id": "1323",
+   "slug": "26keys",
+   "title": "26Keys: Own Your English",
+   "src": "/icons/1323_26keys.webp",
+   "colors": [
+    "black",
+    "white",
+    "light gray"
+   ],
+   "background": "black",
+   "colorText": "Colors by area: black 73%, white 12%, light gray 7%, dark gray 5%. The background (outer edge) is black. The middle of the icon is mostly white and light gray. The icon is dark overall.",
+   "shapeText": "On a black background there is a foreground covering 26% of the icon, colored white 51%, gray 42%. It is made of 4 separate pieces. The foreground fills the whole icon, centered at 44% across and 48% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: black 73%, white 12%, light gray 7%, dark gray 5%. The background (outer edge) is black. The middle of the icon is mostly white and light gray. The icon is dark overall. On a black background there is a foreground covering 26% of the icon, colored white 51%, gray 42%. It is made of 4 separate pieces. The foreground fills the whole icon, centered at 44% across and 48% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1329",
+   "slug": "orb-social-on-lens-protocol",
+   "title": "Orb Social on Lens Protocol",
+   "src": "/icons/1329_orb-social-on-lens-protocol.webp",
+   "colors": [
+    "black",
+    "blue",
+    "dark red"
+   ],
+   "background": "black",
+   "colorText": "Colors by area: black 61%, blue 13%, dark red 9%. The background (outer edge) is black. The middle of the icon is mostly blue and black. The icon is dark overall.",
+   "shapeText": "On a black background there is a foreground covering 31% of the icon, colored blue 44%, red 23%, teal 18%. It is made of 5 separate pieces. The foreground spans 69% of the width and 91% of the height, centered at 50% across and 49% down. The shape is elongated vertically. It has 5 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: black 61%, blue 13%, dark red 9%. The background (outer edge) is black. The middle of the icon is mostly blue and black. The icon is dark overall. On a black background there is a foreground covering 31% of the icon, colored blue 44%, red 23%, teal 18%. It is made of 5 separate pieces. The foreground spans 69% of the width and 91% of the height, centered at 50% across and 49% down. The shape is elongated vertically. It has 5 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1334",
+   "slug": "robinhoodapp",
+   "title": "Robinhood: Trading & Investing",
+   "src": "/icons/1334_robinhoodapp.webp",
+   "colors": [
+    "yellow-green (lime)",
+    "black"
+   ],
+   "background": "green",
+   "colorText": "Colors by area: yellow-green (lime) 88%, black 8%. The background (outer edge) is yellow-green (lime). The middle of the icon is mostly black and yellow-green (lime). The icon is medium brightness.",
+   "shapeText": "On a green background there is a foreground covering 15% of the icon, colored black 61%, yellow 22%, green 17%. It is made of 5 separate pieces. The foreground fills the whole icon, centered at 49% across and 43% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: yellow-green (lime) 88%, black 8%. The background (outer edge) is yellow-green (lime). The middle of the icon is mostly black and yellow-green (lime). The icon is medium brightness. On a green background there is a foreground covering 15% of the icon, colored black 61%, yellow 22%, green 17%. It is made of 5 separate pieces. The foreground fills the whole icon, centered at 49% across and 43% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1351",
+   "slug": "lapse",
+   "title": "Lapse - Disposable Camera",
+   "src": "/icons/1351_lapse.webp",
+   "colors": [
+    "orange",
+    "black",
+    "pink"
+   ],
+   "background": "orange",
+   "colorText": "Colors by area: orange 49%, black 15%, pink 15%, red 9%, pink-red 6%. The background (outer edge) is orange. The middle of the icon is mostly orange and pink. The icon is medium brightness.",
+   "shapeText": "On a orange background there is a foreground covering 54% of the icon, colored pink 40%, black 32%, red 25%. It is made of 1 separate piece. The foreground spans 81% of the width and 94% of the height, centered at 49% across and 51% down. The shape is compact, about as wide as it is tall. It has 3 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is symmetric left-right. The shape is solid.",
+   "description": "Colors by area: orange 49%, black 15%, pink 15%, red 9%, pink-red 6%. The background (outer edge) is orange. The middle of the icon is mostly orange and pink. The icon is medium brightness. On a orange background there is a foreground covering 54% of the icon, colored pink 40%, black 32%, red 25%. It is made of 1 separate piece. The foreground spans 81% of the width and 94% of the height, centered at 49% across and 51% down. The shape is compact, about as wide as it is tall. It has 3 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is symmetric left-right. The shape is solid."
+  },
+  {
+   "id": "1357",
+   "slug": "pieter-pot-supermarkt",
+   "title": "Pieter Pot Supermarkt",
+   "src": "/icons/1357_pieter-pot-supermarkt.webp",
+   "colors": [
+    "cream or beige",
+    "black",
+    "white"
+   ],
+   "background": "beige",
+   "colorText": "Colors by area: cream or beige 67%, black 13%, white 8%, gray 4%. The background (outer edge) is cream or beige. The middle of the icon is mostly black and white. The icon is light overall.",
+   "shapeText": "On a beige background there is a foreground covering 24% of the icon, colored black 63%, gray 35%. It is made of 1 separate piece. The foreground spans 59% of the width and 78% of the height, centered at 48% across and 49% down. The shape is compact, about as wide as it is tall. It has 6 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: cream or beige 67%, black 13%, white 8%, gray 4%. The background (outer edge) is cream or beige. The middle of the icon is mostly black and white. The icon is light overall. On a beige background there is a foreground covering 24% of the icon, colored black 63%, gray 35%. It is made of 1 separate piece. The foreground spans 59% of the width and 78% of the height, centered at 48% across and 49% down. The shape is compact, about as wide as it is tall. It has 6 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1367",
+   "slug": "focus-traveller",
+   "title": "Focus Traveller - Flow Timer",
+   "src": "/icons/1367_focus-traveller.webp",
+   "colors": [
+    "blue",
+    "green",
+    "orange"
+   ],
+   "background": "blue",
+   "colorText": "Colors by area: blue 59%, green 8%, orange 6%, dark blue 5%, pale red 4%. The background (outer edge) is blue. The middle of the icon is mostly orange and blue. The icon is medium brightness.",
+   "shapeText": "On a blue background there is a foreground covering 55% of the icon, colored blue 37%, green 22%, orange 15%. It is made of 1 separate piece. The foreground spans 83% of the width and 100% of the height, centered at 42% across and 63% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: blue 59%, green 8%, orange 6%, dark blue 5%, pale red 4%. The background (outer edge) is blue. The middle of the icon is mostly orange and blue. The icon is medium brightness. On a blue background there is a foreground covering 55% of the icon, colored blue 37%, green 22%, orange 15%. It is made of 1 separate piece. The foreground spans 83% of the width and 100% of the height, centered at 42% across and 63% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1370",
+   "slug": "retro",
+   "title": "Retro — Photos with Friends",
+   "src": "/icons/1370_retro.webp",
+   "colors": [
+    "white",
+    "black",
+    "gray"
+   ],
+   "background": "white",
+   "colorText": "Colors by area: white 62%, black 12%, gray 10%, light gray 10%, dark gray 6%. The background (outer edge) is white. The middle of the icon is mostly white and dark gray. The icon is light overall.",
+   "shapeText": "On a white background there is a foreground covering 35% of the icon, colored gray 61%, black 38%. It is made of 3 separate pieces. The foreground spans 69% of the width and 69% of the height, centered at 47% across and 49% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid.",
+   "description": "Colors by area: white 62%, black 12%, gray 10%, light gray 10%, dark gray 6%. The background (outer edge) is white. The middle of the icon is mostly white and dark gray. The icon is light overall. On a white background there is a foreground covering 35% of the icon, colored gray 61%, black 38%. It is made of 3 separate pieces. The foreground spans 69% of the width and 69% of the height, centered at 47% across and 49% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid."
+  },
+  {
+   "id": "1379",
+   "slug": "imagi",
+   "title": "imagi - fun coding game",
+   "src": "/icons/1379_imagi.webp",
+   "colors": [
+    "white",
+    "pale pink",
+    "black"
+   ],
+   "background": "white",
+   "colorText": "Colors by area: white 42%, pale pink 10%, black 7%, green 7%, light blue (cyan) 7%, yellow-orange 6%. The background (outer edge) is white. The middle of the icon is mostly white and black. The icon is light overall.",
+   "shapeText": "On a white background there is a foreground covering 58% of the icon, colored black 15%, orange 15%, teal 14%. It is made of 6 separate pieces. The foreground fills the whole icon, centered at 49% across and 38% down. The shape is compact, about as wide as it is tall. It is symmetric left-right. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: white 42%, pale pink 10%, black 7%, green 7%, light blue (cyan) 7%, yellow-orange 6%. The background (outer edge) is white. The middle of the icon is mostly white and black. The icon is light overall. On a white background there is a foreground covering 58% of the icon, colored black 15%, orange 15%, teal 14%. It is made of 6 separate pieces. The foreground fills the whole icon, centered at 49% across and 38% down. The shape is compact, about as wide as it is tall. It is symmetric left-right. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1381",
+   "slug": "eight-sleep",
+   "title": "Eight Sleep",
+   "src": "/icons/1381_eight-sleep.webp",
+   "colors": [
+    "black",
+    "white"
+   ],
+   "background": "black",
+   "colorText": "Colors by area: black 79%, white 16%. The background (outer edge) is black. The middle of the icon is mostly white and black. The icon is dark overall.",
+   "shapeText": "On a black background there is a foreground covering 20% of the icon, colored white 91%, gray 9%. It is made of 1 separate piece. The foreground spans 41% of the width and 62% of the height, centered at 49% across and 49% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is symmetric left-right and top-bottom. The shape is solid.",
+   "description": "Colors by area: black 79%, white 16%. The background (outer edge) is black. The middle of the icon is mostly white and black. The icon is dark overall. On a black background there is a foreground covering 20% of the icon, colored white 91%, gray 9%. It is made of 1 separate piece. The foreground spans 41% of the width and 62% of the height, centered at 49% across and 49% down. The shape is compact, about as wide as it is tall. It has 2 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is symmetric left-right and top-bottom. The shape is solid."
+  },
+  {
+   "id": "1401",
+   "slug": "sticky-notes-color-widget",
+   "title": "Sticky Notes & Color Widget",
+   "src": "/icons/1401_sticky-notes-color-widget.webp",
+   "colors": [
+    "yellow",
+    "yellow-green (lime)",
+    "dark yellow-green (lime)"
+   ],
+   "background": "yellow",
+   "colorText": "Colors by area: yellow 56%, yellow-green (lime) 27%, dark yellow-green (lime) 11%, dark green 6%. The background (outer edge) is yellow. The middle of the icon is mostly yellow-green (lime) and yellow. The icon is medium brightness.",
+   "shapeText": "On a yellow background there is a foreground covering 23% of the icon, colored green 96%. It is made of 7 separate pieces. The foreground spans 88% of the width and 77% of the height, centered at 61% across and 62% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: yellow 56%, yellow-green (lime) 27%, dark yellow-green (lime) 11%, dark green 6%. The background (outer edge) is yellow. The middle of the icon is mostly yellow-green (lime) and yellow. The icon is medium brightness. On a yellow background there is a foreground covering 23% of the icon, colored green 96%. It is made of 7 separate pieces. The foreground spans 88% of the width and 77% of the height, centered at 61% across and 62% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1404",
+   "slug": "peaks",
+   "title": "Peaks: Sleep & Energy",
+   "src": "/icons/1404_peaks.webp",
+   "colors": [
+    "blue",
+    "dark blue",
+    "light blue (cyan)"
+   ],
+   "background": "blue",
+   "colorText": "Colors by area: blue 45%, dark blue 18%, light blue (cyan) 9%, white 6%, light gray 5%, yellow-orange 4%. The background (outer edge) is blue. The middle of the icon is mostly white and light gray. The icon is medium brightness.",
+   "shapeText": "On a blue background there is a foreground covering 80% of the icon, colored blue 50%, teal 20%, white 9%. It is made of 1 separate piece. The foreground fills the whole icon, centered at 49% across and 49% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid.",
+   "description": "Colors by area: blue 45%, dark blue 18%, light blue (cyan) 9%, white 6%, light gray 5%, yellow-orange 4%. The background (outer edge) is blue. The middle of the icon is mostly white and light gray. The icon is medium brightness. On a blue background there is a foreground covering 80% of the icon, colored blue 50%, teal 20%, white 9%. It is made of 1 separate piece. The foreground fills the whole icon, centered at 49% across and 49% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid."
+  },
+  {
+   "id": "1422",
+   "slug": "run-receipt",
+   "title": "Run Receipt",
+   "src": "/icons/1422_run-receipt.webp",
+   "colors": [
+    "white",
+    "black"
+   ],
+   "background": "white",
+   "colorText": "Colors by area: white 88%, black 6%. The background (outer edge) is white. The middle of the icon is mostly white and black. The icon is light overall.",
+   "shapeText": "On a white background there is a foreground covering 12% of the icon, colored gray 52%, black 48%. It is made of 2 separate pieces. The foreground spans 75% of the width and 53% of the height, centered at 49% across and 38% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: white 88%, black 6%. The background (outer edge) is white. The middle of the icon is mostly white and black. The icon is light overall. On a white background there is a foreground covering 12% of the icon, colored gray 52%, black 48%. It is made of 2 separate pieces. The foreground spans 75% of the width and 53% of the height, centered at 49% across and 38% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1440",
+   "slug": "bauhaus-clock",
+   "title": "Bauhaus Clock - Analog Watch",
+   "src": "/icons/1440_bauhaus-clock.webp",
+   "colors": [
+    "pale light blue (cyan)",
+    "pale green-blue (teal)",
+    "light blue (cyan)"
+   ],
+   "background": "teal",
+   "colorText": "Colors by area: pale light blue (cyan) 78%, pale green-blue (teal) 10%, light blue (cyan) 6%, white 4%. The background (outer edge) is pale light blue (cyan). The middle of the icon is mostly pale light blue (cyan) and white. The icon is light overall.",
+   "shapeText": "On a teal background there is a foreground covering 8% of the icon, colored teal 83%, white 17%. It is made of 4 separate pieces. The foreground spans 100% of the width and 86% of the height, centered at 52% across and 52% down. The shape is elongated diagonally. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: pale light blue (cyan) 78%, pale green-blue (teal) 10%, light blue (cyan) 6%, white 4%. The background (outer edge) is pale light blue (cyan). The middle of the icon is mostly pale light blue (cyan) and white. The icon is light overall. On a teal background there is a foreground covering 8% of the icon, colored teal 83%, white 17%. It is made of 4 separate pieces. The foreground spans 100% of the width and 86% of the height, centered at 52% across and 52% down. The shape is elongated diagonally. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1444",
+   "slug": "okuri-japanese-lunar-calendar",
+   "title": "OKURI Japanese Lunar Calendar",
+   "src": "/icons/1444_okuri-japanese-lunar-calendar.webp",
+   "colors": [
+    "white",
+    "red"
+   ],
+   "background": "white",
+   "colorText": "Colors by area: white 87%, red 9%. The background (outer edge) is white. The middle of the icon is mostly white and red. The icon is light overall.",
+   "shapeText": "On a white background there is a foreground covering 13% of the icon, colored red 77%, white 15%. It is made of 2 separate pieces. The foreground spans 88% of the width and 75% of the height, centered at 52% across and 50% down. The shape is compact, about as wide as it is tall. It has 3 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: white 87%, red 9%. The background (outer edge) is white. The middle of the icon is mostly white and red. The icon is light overall. On a white background there is a foreground covering 13% of the icon, colored red 77%, white 15%. It is made of 2 separate pieces. The foreground spans 88% of the width and 75% of the height, centered at 52% across and 50% down. The shape is compact, about as wide as it is tall. It has 3 enclosed holes (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1447",
+   "slug": "aredotna",
+   "title": "Are.na",
+   "src": "/icons/1447_aredotna.webp",
+   "colors": [
+    "white",
+    "black"
+   ],
+   "background": "white",
+   "colorText": "Colors by area: white 89%, black 7%. The background (outer edge) is white. The middle of the icon is mostly white and black. The icon is light overall.",
+   "shapeText": "On a white background there is a foreground covering 11% of the icon, colored black 69%, gray 30%. It is made of 1 separate piece. The foreground spans 66% of the width and 41% of the height, centered at 49% across and 49% down. The shape is elongated horizontally. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is symmetric left-right and top-bottom. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: white 89%, black 7%. The background (outer edge) is white. The middle of the icon is mostly white and black. The icon is light overall. On a white background there is a foreground covering 11% of the icon, colored black 69%, gray 30%. It is made of 1 separate piece. The foreground spans 66% of the width and 41% of the height, centered at 49% across and 49% down. The shape is elongated horizontally. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is symmetric left-right and top-bottom. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1481",
+   "slug": "hily-dating-app",
+   "title": "Hily Dating App: Meet. Date.",
+   "src": "/icons/1481_hily-dating-app.webp",
+   "colors": [
+    "blue-purple (indigo)",
+    "black"
+   ],
+   "background": "purple",
+   "colorText": "Colors by area: blue-purple (indigo) 69%, black 30%. The background (outer edge) is blue-purple (indigo). The middle of the icon is mostly black and blue-purple (indigo). The icon is medium brightness.",
+   "shapeText": "On a purple background there is a foreground covering 32% of the icon, colored black 93%. It is made of 1 separate piece. The foreground spans 67% of the width and 66% of the height, centered at 48% across and 49% down. The shape is compact, about as wide as it is tall. It is symmetric top-bottom. The shape is solid.",
+   "description": "Colors by area: blue-purple (indigo) 69%, black 30%. The background (outer edge) is blue-purple (indigo). The middle of the icon is mostly black and blue-purple (indigo). The icon is medium brightness. On a purple background there is a foreground covering 32% of the icon, colored black 93%. It is made of 1 separate piece. The foreground spans 67% of the width and 66% of the height, centered at 48% across and 49% down. The shape is compact, about as wide as it is tall. It is symmetric top-bottom. The shape is solid."
+  },
+  {
+   "id": "1491",
+   "slug": "apple-maps",
+   "title": "Apple Maps",
+   "src": "/icons/1491_apple-maps.webp",
+   "colors": [
+    "white",
+    "green",
+    "blue"
+   ],
+   "background": "green",
+   "colorText": "Colors by area: white 32%, green 26%, blue 20%, pink 6%, pale green 6%. The background (outer edge) is green. The middle of the icon is mostly blue and white. The icon is light overall.",
+   "shapeText": "On a green background there is a foreground covering 74% of the icon, colored white 45%, blue 28%, pink 11%. It is made of 2 separate pieces. The foreground fills the whole icon, centered at 42% across and 56% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid.",
+   "description": "Colors by area: white 32%, green 26%, blue 20%, pink 6%, pale green 6%. The background (outer edge) is green. The middle of the icon is mostly blue and white. The icon is light overall. On a green background there is a foreground covering 74% of the icon, colored white 45%, blue 28%, pink 11%. It is made of 2 separate pieces. The foreground fills the whole icon, centered at 42% across and 56% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is solid."
+  },
+  {
+   "id": "1522",
+   "slug": "linktree",
+   "title": "Linktree: Link in Bio Creator",
+   "src": "/icons/1522_linktree.webp",
+   "colors": [
+    "green",
+    "black"
+   ],
+   "background": "green",
+   "colorText": "Colors by area: green 84%, black 13%. The background (outer edge) is green. The middle of the icon is mostly black and green. The icon is medium brightness.",
+   "shapeText": "On a green background there is a foreground covering 20% of the icon, colored black 69%, green 30%. It is made of 3 separate pieces. The foreground fills the whole icon, centered at 47% across and 46% down. The shape is elongated diagonally. It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: green 84%, black 13%. The background (outer edge) is green. The middle of the icon is mostly black and green. The icon is medium brightness. On a green background there is a foreground covering 20% of the icon, colored black 69%, green 30%. It is made of 3 separate pieces. The foreground fills the whole icon, centered at 47% across and 46% down. The shape is elongated diagonally. It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1525",
+   "slug": "arc-search",
+   "title": "Arc Search — Find it, Faster",
+   "src": "/icons/1525_arc-search.webp",
+   "colors": [
+    "blue-purple (indigo)",
+    "red",
+    "white"
+   ],
+   "background": "purple",
+   "colorText": "Colors by area: blue-purple (indigo) 69%, red 14%, white 7%, blue 6%. The background (outer edge) is blue-purple (indigo). The middle of the icon is mostly red and blue. The icon is medium brightness.",
+   "shapeText": "On a purple background there is a foreground covering 30% of the icon, colored red 50%, white 24%, blue 16%. It is made of 1 separate piece. The foreground spans 77% of the width and 66% of the height, centered at 52% across and 50% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: blue-purple (indigo) 69%, red 14%, white 7%, blue 6%. The background (outer edge) is blue-purple (indigo). The middle of the icon is mostly red and blue. The icon is medium brightness. On a purple background there is a foreground covering 30% of the icon, colored red 50%, white 24%, blue 16%. It is made of 1 separate piece. The foreground spans 77% of the width and 66% of the height, centered at 52% across and 50% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1527",
+   "slug": "goodreads",
+   "title": "Goodreads: Book Tracker & More",
+   "src": "/icons/1527_goodreads.webp",
+   "colors": [
+    "cream or beige",
+    "black"
+   ],
+   "background": "beige",
+   "colorText": "Colors by area: cream or beige 84%, black 8%. The background (outer edge) is cream or beige. The middle of the icon is mostly cream or beige and black. The icon is light overall.",
+   "shapeText": "On a beige background there is a foreground covering 14% of the icon, colored black 70%, gray 26%. It is made of 1 separate piece. The foreground spans 42% of the width and 72% of the height, centered at 50% across and 50% down. The shape is elongated vertically. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: cream or beige 84%, black 8%. The background (outer edge) is cream or beige. The middle of the icon is mostly cream or beige and black. The icon is light overall. On a beige background there is a foreground covering 14% of the icon, colored black 70%, gray 26%. It is made of 1 separate piece. The foreground spans 42% of the width and 72% of the height, centered at 50% across and 50% down. The shape is elongated vertically. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1529",
+   "slug": "ruter",
+   "title": "Ruter",
+   "src": "/icons/1529_ruter.webp",
+   "colors": [
+    "white",
+    "red"
+   ],
+   "background": "white",
+   "colorText": "Colors by area: white 76%, red 21%. The background (outer edge) is white. The middle of the icon is mostly red and white. The icon is light overall.",
+   "shapeText": "On a white background there is a foreground covering 23% of the icon, colored red 100%. It is made of 1 separate piece. The foreground spans 69% of the width and 62% of the height, centered at 49% across and 50% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: white 76%, red 21%. The background (outer edge) is white. The middle of the icon is mostly red and white. The icon is light overall. On a white background there is a foreground covering 23% of the icon, colored red 100%. It is made of 1 separate piece. The foreground spans 69% of the width and 62% of the height, centered at 49% across and 50% down. The shape is compact, about as wide as it is tall. It has 1 enclosed hole (background showing through closed loops, like inside the letter O or the digit 8). It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1561",
+   "slug": "mydooors",
+   "title": "MyDooors: Relax and Cozy",
+   "src": "/icons/1561_mydooors.webp",
+   "colors": [
+    "black",
+    "yellow",
+    "yellow-orange"
+   ],
+   "background": "black",
+   "colorText": "Colors by area: black 46%, yellow 16%, yellow-orange 16%, dark yellow 9%, yellow-green (lime) 5%. The background (outer edge) is black. The middle of the icon is mostly yellow-orange and yellow. The icon is medium brightness.",
+   "shapeText": "On a black background there is a foreground covering 40% of the icon, colored yellow 86%, green 12%. It is made of 1 separate piece. The foreground spans 100% of the width and 78% of the height, centered at 49% across and 67% down. The shape is compact, about as wide as it is tall. It is symmetric left-right. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: black 46%, yellow 16%, yellow-orange 16%, dark yellow 9%, yellow-green (lime) 5%. The background (outer edge) is black. The middle of the icon is mostly yellow-orange and yellow. The icon is medium brightness. On a black background there is a foreground covering 40% of the icon, colored yellow 86%, green 12%. It is made of 1 separate piece. The foreground spans 100% of the width and 78% of the height, centered at 49% across and 67% down. The shape is compact, about as wide as it is tall. It is symmetric left-right. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1594",
+   "slug": "prodex",
+   "title": "ProDex - Complete Game Guide",
+   "src": "/icons/1594_prodex.webp",
+   "colors": [
+    "red"
+   ],
+   "background": "red",
+   "colorText": "Colors by area: red 93%. The background (outer edge) is red. The middle of the icon is mostly red. The icon is medium brightness.",
+   "shapeText": "On a red background there is a foreground covering 18% of the icon, colored red 69%, blue 12%. It is made of 9 separate pieces. The foreground fills the whole icon, centered at 42% across and 39% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline.",
+   "description": "Colors by area: red 93%. The background (outer edge) is red. The middle of the icon is mostly red. The icon is medium brightness. On a red background there is a foreground covering 18% of the icon, colored red 69%, blue 12%. It is made of 9 separate pieces. The foreground fills the whole icon, centered at 42% across and 39% down. The shape is compact, about as wide as it is tall. It is not symmetric. The shape is open or thin, with a lot of background inside its outline."
+  },
+  {
+   "id": "1595",
+   "slug": "nouns",
+   "title": "Nouns: explore, create & play",
+   "src": "/icons/1595_nouns.webp",
+   "colors": [
+    "yellow-orange",
+    "red",
+    "orange"
+   ],
+   "background": "yellow",
+   "colorText": "Colors by area: yellow-orange 76%, red 11%, orange 4%, white 4%. The background (outer edge) is yellow-orange. The middle of the icon is mostly red and black. The icon is medium brightness.",
+   "shapeText": "On a yellow background there is a foreground covering 22% of the icon, colored red 61%, white 16%, black 16%. It is made of 1 separate piece. The foreground spans 86% of the width and 31% of the height, centered at 55% across and 49% down. The shape is elongated horizontally. It is symmetric top-bottom. The shape is solid.",
+   "description": "Colors by area: yellow-orange 76%, red 11%, orange 4%, white 4%. The background (outer edge) is yellow-orange. The middle of the icon is mostly red and black. The icon is medium brightness. On a yellow background there is a foreground covering 22% of the icon, colored red 61%, white 16%, black 16%. It is made of 1 separate piece. The foreground spans 86% of the width and 31% of the height, centered at 55% across and 49% down. The shape is elongated horizontally. It is symmetric top-bottom. The shape is solid."
+  }
+ ]
+}

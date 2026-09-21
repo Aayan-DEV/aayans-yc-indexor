@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local vision models and the compiled helper
+/models/
+/native/coreml_embed
+/data/library.json
+native/motion
+/data/letters.json
+/removed-icons
+/data/meta_vectors_v3.f32
+/data/jev_tags.json
