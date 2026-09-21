@@ -31,17 +31,6 @@ The earlier pixel-math-only indexers are kept in `indexer/` for reference and ar
 - **WebGL is decoration only.** The metal ring paints behind the submit button; the button itself is plain DOM, so a lost WebGL context cannot break search. Every effect is `ssr: false` with a static fallback.
 - A new search aborts the previous request.
 
-## Deploying
-
-Live on Railway (project Pols, service `pols`, which carries the `pols.dev` domain).
-
-- **The CLIP text tower had to leave macOS.** Every search embeds the query with MobileCLIP-S0 so it lands in the same 512-dimensional space as the library's image vectors, and that was `native/coreml_embed`: a Mach-O arm64 binary reading Apple-only `.mlmodelc` models. It cannot run in a Linux container. `lib/clip/onnx.ts` runs the same S0 checkpoint exported to ONNX through `onnxruntime-node`, which was already a dependency for the sentence model. `lib/clip/helper.ts` picks CoreML where it exists and ONNX everywhere else; `CLIP_BACKEND=onnx` forces the portable path so the Linux behaviour can be tested on a Mac.
-- **Verify before trusting it**: `node --experimental-strip-types scripts/check-clip-onnx.mts` runs the same token arrays through both towers and compares. The fp16 build agrees with CoreML to a worst cosine of **0.999914**, which is float precision. The int8 build is half the size and manages **0.847**, the 4-bit build 0.982. Neither throws: they return 512 well-formed floats that quietly rank nonsense, which is exactly why the two are compared rather than assumed. Ship fp16.
-- **The two query embeddings now overlap.** MobileCLIP's and the sentence model's readings of the query need nothing from each other but were awaited two hundred lines apart, one after the other. Started together, the cost is the slower of the two rather than their sum: on a Mac 14.9 ms became 8.4 ms, and it absorbs most of ONNX being slower than the Neural Engine.
-- **What ships.** `.gitignore` excludes `/models/`, `/data/library.json` and `/data/meta_vectors_v3.f32`, so a deploy that honours it has no vectors at all and every search is nonsense. Build an explicit directory instead: the source, `data/` minus the v2 vectors, `models/onnx/text_model_fp16.onnx`, `public/icons` and `public/atlas`. About 182 MB. Leave out `native/` and the 206 MB of CoreML packages, which are useless on Linux.
-- **Uploads do not index off a Mac.** The embedding, the colour words and the OCR all come from the CoreML helper, so `embedImage` refuses rather than half-indexing an image with three of its four signals missing. Searching is unaffected: all 6,241 vectors are precomputed and shipped.
-- **`TYPE_SAFE_KEY` must be set on the service** or the whole thing falls back to a local scorer and answers `degraded: true` with no `costUsd`.
-
 ## Run
 
 ```bash
