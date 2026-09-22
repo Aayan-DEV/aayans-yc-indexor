@@ -68,3 +68,7 @@ about a second.
 
 `NOTES.md` is the long version: the retrieval pipeline in detail, the physics and frame-pacing work, the sprite atlas, and
 the measurements behind all of it.
+
+## Licence
+
+The code is MIT. The logos, the YC data and the Apple models bundled with it are not mine to license; see [LICENSE](LICENSE).
