@@ -2,6 +2,9 @@
   "name": "icon-search",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
     "build:native": "swiftc -O native/coreml_embed.swift -o native/coreml_embed",
     "dev": "next dev",
