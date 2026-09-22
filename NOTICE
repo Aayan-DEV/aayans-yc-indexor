@@ -1,0 +1,9 @@
+The MIT licence in LICENSE covers the source code in this repository.
+
+Some of what is bundled alongside it belongs to other people:
+
+- Logos in `public/icons/` belong to the companies they represent.
+- Company data in `data/` comes from Y Combinator's public API, via yc-oss.
+- Models in `models/` are Apple's MobileCLIP, under Apple's own licence.
+
+Check those for yourself before redistributing them.

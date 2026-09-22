@@ -71,4 +71,4 @@ the measurements behind all of it.
 
 ## Licence
 
-The code is MIT. The logos, the YC data and the Apple models bundled with it are not mine to license; see [LICENSE](LICENSE).
+The code is [MIT](LICENSE). The logos, the YC data and the Apple models bundled with it are not mine to license; see [NOTICE](NOTICE).
