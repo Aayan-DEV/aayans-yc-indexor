@@ -43,3 +43,8 @@ next-env.d.ts
 
 # Everything the app needs to run is committed: the logos, the vectors, the tags and the models.
 # Clone it and it works. Only build output, dependencies and real keys stay out.
+
+# Refilled by tools/yc-data/download.py and placeholders.py. Not committed because they would be 53 MB
+# byte-identical to public/icons, which already holds all 6,241.
+/tools/yc-data/logos/
+/tools/yc-data/placeholders/

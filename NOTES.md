@@ -101,7 +101,7 @@ Without the key every search falls back to a local scorer and answers `degraded:
 
 ## YC company logos and their written info
 
-The prep pipeline that produced `data/companies.json` lives outside this repo and is not needed to run it. It parsed all 6,241 YC companies (Summer 2005 to Winter 2027) parsed from the YC directory by `parse.py`: `companies.json` and `companies.csv`
+`tools/yc-data/` holds the scripts that produced `data/companies.json`, and they are not needed to run the app. They parsed all 6,241 YC companies (Summer 2005 to Winter 2027) parsed from the YC directory by `parse.py`: `companies.json` and `companies.csv`
 (slug, name, tagline, location, batch, season, year, industry, subindustry, url, logo_url, logo_file) plus `logos/<slug>.png` for the 5,616 that have a logo
 (`download.py`, safe to re-run; one logo, `brainhi`, returns 403 at the source). The 624 companies without a logo get a lettered tile
 (`placeholders.py` writes `placeholders/<slug>.png`), so every company is searchable. In the app all 6,241 are `public/icons/yc_<slug>.png`, and
@@ -305,7 +305,7 @@ looks like free money. It is not: on the long-tail requests the benchmark cannot
 Whitespace lands 11th with it and 22nd without. It is kept, and `JEV_DETAIL` re-runs that measurement. Colours are now
 only sent when the request mentions one, which was pure waste otherwise.
 
-**Well-known companies.** The prep step merges YC's open data (`yc_oss_all.json`, 10.5 MB from `yc-oss.github.io/api/companies/all.json`):
+**Well-known companies.** `tools/yc-data/enrich.py` merges YC's open data (`yc_oss_all.json`, 10.5 MB from `yc-oss.github.io/api/companies/all.json`):
 long description, tags, team size, status and the top-company flag, and it added the one company the directory pages never listed (Y Combinator itself).
 Words and meaning-vectors (`data/meta_vectors_v2.f32`) now include tags and the start of the description. Two things make famous companies show up:
 

@@ -64,6 +64,11 @@ That narrows 6,241 down to at most 320 finalists. Jev then scores every finalist
 calibrated probability rather than generated text, which is why the percentages on screen are real and why it lands in
 about a second.
 
+## Adding companies
+
+Everything the app reads is committed, so you never need this to run it. `tools/yc-data/` has the scripts that built
+`data/companies.json` and `public/icons/` in the first place, with a README giving the order to run them in.
+
 ## Everything else
 
 `NOTES.md` is the long version: the retrieval pipeline in detail, the physics and frame-pacing work, the sprite atlas, and
