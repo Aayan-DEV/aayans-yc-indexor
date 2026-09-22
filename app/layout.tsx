@@ -4,8 +4,8 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Icon Recall",
-  description: "Describe an image the way you remember it.",
+  title: "Aayan's-YC-indexor",
+  description: "Describe a YC startup in any words and the logos that match float up.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
