@@ -4,7 +4,7 @@ Describe a YC startup in any words you like and the logos that match float up ou
 All 6,241 companies are searchable by what they do, what their logo looks like, and what they say inside it.
 
 ```bash
-git clone https://github.com/Aayan-DEV/Aayan-s-YC-indexor && cd Aayan-s-YC-indexor && npm install && cp .env.example .env.local && npm run dev
+git clone https://github.com/Aayan-DEV/aayans-yc-indexor && cd aayans-yc-indexor && npm install && cp .env.example .env.local && npm run dev
 ```
 
 Put a TypeSafe key in `.env.local`. Without one, search falls back to a local scorer and the answers get much worse.
