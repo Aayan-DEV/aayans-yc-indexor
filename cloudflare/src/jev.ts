@@ -1,5 +1,6 @@
 export type Candidate = { info: string; colors: string };
 export type Verdict = { scores: number[]; tokens: number };
+export type JevAttempt = { verdict: Verdict | null; reason?: string };
 
 const ENDPOINT = "https://ai-gateway.vercel.sh/typesafe/v1/systemone";
 const HOW =
@@ -14,8 +15,8 @@ const HOW =
   "real batch: the newest or latest batch is simply the one furthest ahead in `yc_batches_newest_first`, whether or not it has started.";
 
 /** Same SystemOne candidate judgement, routed through Vercel AI Gateway. */
-export async function judgeWithJev(query: string, candidates: Candidate[], batches: string[], key: string | undefined): Promise<Verdict | null> {
-  if (!key || !candidates.length) return null;
+export async function judgeWithJev(query: string, candidates: Candidate[], batches: string[], key: string | undefined): Promise<JevAttempt> {
+  if (!key || !candidates.length) return { verdict: null, reason: !key ? "missing_key" : "no_candidates" };
   const questions = Object.fromEntries(candidates.map((candidate, i) => [`c${i}`, {
     type: "noul",
     instructions: {
@@ -39,16 +40,17 @@ export async function judgeWithJev(query: string, candidates: Candidate[], batch
       });
       if (response.ok) {
         const data = await response.json() as { answers?: Record<string, { noul?: number }>; usage?: { input_tokens?: number } };
-        if (!data.answers) return null;
-        return {
+        if (!data.answers) return { verdict: null, reason: "missing_answers" };
+        return { verdict: {
           scores: candidates.map((_, i) => Math.max(0, Math.min(1, data.answers?.[`c${i}`]?.noul ?? 0.5))),
           tokens: data.usage?.input_tokens ?? 0,
-        };
+        } };
       }
-      if (response.status !== 429 && response.status < 500) return null;
+      console.error("Jev gateway HTTP status", response.status);
+      if (response.status !== 429 && response.status < 500) return { verdict: null, reason: `gateway_http_${response.status}` };
     } catch {
-      if (performance.now() - started > 2000) return null;
+      if (performance.now() - started > 2000) return { verdict: null, reason: "gateway_timeout" };
     }
   }
-  return null;
+  return { verdict: null, reason: "gateway_unavailable" };
 }

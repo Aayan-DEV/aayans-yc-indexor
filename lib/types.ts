@@ -22,6 +22,7 @@ export type SearchResponse = {
   mode: "one" | "all"; // "one" ranks a shortlist to find the thing you mean; "all" asks every image whether it qualifies
   confident: boolean; // matches > 0
   degraded?: boolean; // Jev was needed and did not answer: looks alone decided, and the answer was not cached
+  jevUnavailableReason?: string; // Non-secret gateway status for diagnosing a degraded Worker search
   judged: number;
   ms: number;
   embedMs: number;

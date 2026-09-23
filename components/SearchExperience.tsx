@@ -227,7 +227,7 @@ export function SearchExperience({ icons, indexed, sheet, cloudflare = false }: 
             <span className="tabular-nums">{indexed.toLocaleString()} startups indexed</span>
           </div>
           {cloudflare && state.phase === "done" && <div className="pointer-events-none absolute left-0 top-full mt-2.5 font-mono text-[11px] text-muted">
-            {state.data.degraded ? "Jev unavailable · estimated relevance" : state.data.decidedBy === "jev" ? `Jev scored ${state.data.judged} finalists` : "Exact name match"}
+            {state.data.degraded ? `Jev unavailable${state.data.jevUnavailableReason ? ` (${state.data.jevUnavailableReason.replaceAll("_", " ")})` : ""} · estimated relevance` : state.data.decidedBy === "jev" ? `Jev scored ${state.data.judged} finalists` : "Exact name match"}
           </div>}
         </div>
 

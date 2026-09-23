@@ -106,8 +106,8 @@ async function search(request: Request, env: Env) {
       colors: c.colors.join(", "),
     };
   }), batches, env.AI_GATEWAY_API_KEY)));
-  const jev = chunks.length > 0 && verdicts.every(Boolean)
-    ? verdicts.flatMap((verdict) => verdict!.scores)
+  const jev = chunks.length > 0 && verdicts.every((attempt) => attempt.verdict)
+    ? verdicts.flatMap((attempt) => attempt.verdict!.scores)
     : null;
   const finalists = selected.map((entry, n) => ({ ...entry, jev: jev?.[n] }));
   if (jev) finalists.sort((a, b) => (b.jev! - a.jev!) || (b.score - a.score));
@@ -128,7 +128,8 @@ async function search(request: Request, env: Env) {
     query, hits, matches: Math.max(Math.min(9, hits.length), matches), mode: all ? "all" : "one",
     confident: matches > 0, degraded: !exactName && !jev, judged: jev?.length ?? 0,
     embedMs: Math.round(performance.now() - started), decidedBy: exactName ? "name" : jev ? "jev" : "text",
-    tokens: verdicts.reduce((sum, verdict) => sum + (verdict?.tokens ?? 0), 0),
+    tokens: verdicts.reduce((sum, attempt) => sum + (attempt.verdict?.tokens ?? 0), 0),
+    ...(!exactName && !jev && { jevUnavailableReason: verdicts.find((attempt) => attempt.reason)?.reason ?? (env.AI_GATEWAY_API_KEY ? "not_attempted" : "missing_key") }),
     cached: false, ms: Math.round(performance.now() - started),
   };
   if (cached.size > 100) cached.clear();
