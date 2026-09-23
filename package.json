@@ -11,7 +11,10 @@
     "build": "next build",
     "start": "next start",
     "build:motion": "swiftc -O native/motion.swift -o native/motion",
-    "atlas": "node scripts/build-atlas.mjs"
+    "atlas": "node scripts/build-atlas.mjs",
+    "cf:build": "node cloudflare/build-data.mjs && vite build --config cloudflare/vite.config.mjs",
+    "cf:dev": "npm run cf:build && wrangler dev --config cloudflare/wrangler.jsonc",
+    "cf:deploy": "npm run cf:build && wrangler deploy --config cloudflare/wrangler.jsonc"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.0",
@@ -27,11 +30,15 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/matter-js": "^0.20.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^8.3.0",
+    "wrangler": "^4.136.3"
   }
 }

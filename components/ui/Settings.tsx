@@ -6,6 +6,7 @@ import { LiquidToggle } from "./LiquidToggle";
 export type NoLogo = { active: boolean; acquired: boolean; closed: boolean };
 
 type Props = {
+  motionAvailable?: boolean;
   motion: boolean;
   setMotion: (on: boolean) => void;
   noLogo: NoLogo;
@@ -22,7 +23,7 @@ type Props = {
  * Everything adjustable, folded away behind one cog so the page is only the pile and the search bar. It opens on a
  * click and closes on a click anywhere else or on Escape.
  */
-export const Settings = memo(function Settings({ motion, setMotion, noLogo, setNoLogo, icons, setIcons, mostIcons, spent, lit, busy }: Props) {
+export const Settings = memo(function Settings({ motionAvailable = true, motion, setMotion, noLogo, setNoLogo, icons, setIcons, mostIcons, spent, lit, busy }: Props) {
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   const rate = useRef<HTMLSpanElement>(null);
@@ -88,10 +89,10 @@ export const Settings = memo(function Settings({ motion, setMotion, noLogo, setN
 
       <div className="settings-panel mt-2.5 w-[268px] overflow-hidden rounded-[5px] border border-line-strong bg-raised" data-open={open} aria-hidden={!open}>
         <div className={head}>Pile</div>
-        <div className={cell}>
+        {motionAvailable && <div className={cell}>
           <span className={name}>Motion</span>
           <LiquidToggle on={motion} onChange={setMotion} label="MacBook motion" />
-        </div>
+        </div>}
         <div className="border-b border-line px-3.5 py-2.5">
           <div className="flex items-center justify-between">
             <span className={name}>Icons</span>

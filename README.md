@@ -3,6 +3,19 @@
 Describe a YC startup in any words you like and the logos that match float up out of a physics pile, each with how likely it is.
 All 6,241 companies are searchable by what they do, what their logo looks like, and what they say inside it.
 
+## Cloudflare Workers edition
+
+This fork includes a separate Workers build in `cloudflare/`. It keeps the physics pile and the 6,241-company catalog, while replacing the Mac-only server process with a Worker and static assets. It uses Cloudflare Workers AI's BGE Small text embeddings, the committed company vectors, name/tag/description matching, logo colors, and OCR text. Jev judges the shortlisted candidates through Vercel AI Gateway when `AI_GATEWAY_API_KEY` is configured as a Worker secret; its answers supply the displayed percentages. Without that key, the app labels the percentages as estimated relevance. Click a floating result logo to open the company website in a new tab. It does **not** reproduce MobileCLIP's visual-semantic search. Image uploads and MacBook motion are disabled; the catalog is built from the committed data.
+
+With Node 20.9+ and a Cloudflare account connected to Wrangler:
+
+```bash
+npm install --ignore-scripts
+npm run cf:deploy
+```
+
+`--ignore-scripts` avoids downloading the original macOS app's native ONNX runtime during installation. Wrangler will prompt you to log in if needed. To enable Jev, run `npx wrangler secret put AI_GATEWAY_API_KEY --config cloudflare/wrangler.jsonc` and enter your Vercel AI Gateway key at the private prompt. Never put the key in the repo. The Workers AI binding is configured in `cloudflare/wrangler.jsonc`; no Apple Silicon machine is needed. For local development, use `npm run cf:dev`; Workers AI inference may require Wrangler's remote mode. The Worker search assets are generated from `data/` and `public/` by `npm run cf:build` and are not committed.
+
 ## You need an Apple Silicon Mac
 
 This is a hard requirement, not a preference. Every search embeds your query with MobileCLIP-S0, and that model is Core ML,

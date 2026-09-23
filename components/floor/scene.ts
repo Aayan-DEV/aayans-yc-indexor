@@ -3,7 +3,7 @@ import type { Atlas, Sheet } from "./atlas";
 import type { Box, Rest } from "./layout";
 import type { Patch } from "./sprite";
 
-export type Match = { src: string; probability: number; title: string; tagline?: string; detail?: string };
+export type Match = { src: string; probability: number; title: string; tagline?: string; detail?: string; link?: string };
 
 /** A match while it floats above the search bar. */
 export type Hold = { rest: Rest; scale: number; startY: number; t: number; boost: number; rank: number; label: number; arrived: boolean; match: Match;

@@ -1,10 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import type { OrbState } from "thinking-orbs";
-
-// The orb draws on a canvas, so it only loads in the browser.
-const ThinkingOrb = dynamic(() => import("thinking-orbs").then((m) => m.ThinkingOrb), { ssr: false });
+import { ThinkingOrb, type OrbState } from "thinking-orbs";
 
 type Props = {
   state: OrbState;

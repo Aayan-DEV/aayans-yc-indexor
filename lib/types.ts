@@ -26,7 +26,7 @@ export type SearchResponse = {
   ms: number;
   embedMs: number;
   cached: boolean;
-  decidedBy: "mobileclip" | "mobileclip + jev" | "name";
+  decidedBy: "mobileclip" | "mobileclip + jev" | "name" | "jev" | "text";
   tokens?: number;
   nominated?: Record<string, unknown>;
   deepened?: string[]; // the tags a second, deeper look followed when the first found nothing convincing

@@ -11,7 +11,7 @@ import { SearchComposer } from "./SearchComposer";
 import { Settings } from "./ui/Settings";
 import { YCMark } from "./ui/YCMark";
 
-export function SearchExperience({ icons, indexed, sheet }: { icons: { id: string; src: string; at: number }[]; indexed: number; sheet: Sheet | null }) {
+export function SearchExperience({ icons, indexed, sheet, cloudflare = false }: { icons: { id: string; src: string; at: number }[]; indexed: number; sheet: Sheet | null; cloudflare?: boolean }) {
   // The pile is settled on once, on the first render. The page is server-rendered fresh on every request, so a router
   // refresh hands down a newly shuffled sample; taking it would tear down the physics world and pour the whole pile in
   // again under the person, in the middle of whatever they were doing.
@@ -41,15 +41,15 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
   const sources = useMemo(() => drawn.map((i) => i.src), [drawn]);
   const cells = useMemo(() => drawn.map((i) => i.at), [drawn]);
   // A dropped image falls into the pile the moment the server says it is searchable.
-  const { dragging, progress } = useImageDrop(useCallback((entry: LibraryEntry) => floor.current?.add(entry.src), []));
+  const { dragging, progress } = useImageDrop(useCallback((entry: LibraryEntry) => floor.current?.add(entry.src), []), !cloudflare);
 
   // The MacBook's motion sensor steering gravity, and which of the 624 companies YC has no logo for to keep. Both are
   // remembered on this machine.
-  const [motion, setMotion] = useState(true);
+  const [motion, setMotion] = useState(!cloudflare);
   const [noLogo, setNoLogo] = useState({ active: true, acquired: true, closed: true });
   useEffect(() => {
     try {
-      if (localStorage.getItem("icon-recall:motion") === "off") setMotion(false);
+      if (!cloudflare && localStorage.getItem("icon-recall:motion") === "off") setMotion(false);
       const many = Number(localStorage.getItem("icon-recall:pile"));
       if (Number.isFinite(many) && many >= 100) {
         setPile(many);
@@ -104,7 +104,8 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
     wrote.current = state.at;
     const found = state.data.hits.slice(0, state.data.matches);
     const rows = found.map((h) => [`${Math.round(h.probability * 100)}%`, h.title, h.tagline ?? "", h.batch ?? "", h.place ?? "", h.link ?? "", h.yc ?? ""].join("\t"));
-    const text = [`${state.data.query} — ${found.length} startups`, ["match", "name", "what they do", "batch", "where", "site", "yc"].join("\t"), ...rows].join("\n");
+    const heading = cloudflare && state.data.degraded ? "estimated relevance" : "match";
+    const text = [`${state.data.query} — ${found.length} startups`, [heading, "name", "what they do", "batch", "where", "site", "yc"].join("\t"), ...rows].join("\n");
     navigator.clipboard?.writeText(text).then(
       () => {
         setCopied({ many: found.length, at: state.at });
@@ -112,7 +113,7 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
       },
       () => setToCopy(text), // refused: offer it on a button instead
     );
-  }, [state]);
+  }, [state, cloudflare]);
 
   // Jev did not answer and looks alone found nothing: say so, with the same retry as any other failure.
   const notice =
@@ -121,13 +122,13 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
       : state.phase === "done" && !state.data.matches
         ? // Nothing came up. Saying so is the whole point: an empty page looks like a broken one.
           state.data.degraded
-          ? { message: "Jev did not answer.", retry: state.data.query }
+          ? { message: cloudflare ? "Semantic search is temporarily unavailable." : "Jev did not answer.", retry: state.data.query }
           : { message: "Nothing matched that.", retry: null }
         : null;
 
   const busy = state.phase === "searching";
   // Everything the search says fits floats up, best first, each with its probability.
-  const matches = useMemo(() => (state.phase === "done" ? state.data.hits.slice(0, state.data.matches).map((h) => ({ src: h.src, probability: h.probability, title: h.title, tagline: h.tagline, detail: h.detail })) : []), [state]);
+  const matches = useMemo(() => (state.phase === "done" ? state.data.hits.slice(0, state.data.matches).map((h) => ({ src: h.src, probability: h.probability, title: h.title, tagline: h.tagline, detail: h.detail, link: h.link || h.yc })) : []), [state]);
 
   // The matches float up out of the pile and rest just above the search bar. They stay physics bodies the whole time.
   useEffect(() => {
@@ -158,6 +159,7 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
 
   // Images that arrive while the page is open fall into the pile a moment later. Only what is newer than this page is asked for.
   useEffect(() => {
+    if (cloudflare) return;
     let since = Date.now() - 2000;
     const timer = setInterval(async () => {
       try {
@@ -167,7 +169,7 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
       } catch {}
     }, 1500);
     return () => clearInterval(timer);
-  }, []);
+  }, [cloudflare]);
 
   // Typing shakes the pile, and the first keystroke after a result lets that icon fall back in.
   const lastKey = useRef(0);
@@ -188,7 +190,7 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
   return (
     <>
       <IconFloor sources={sources} cells={cells} sheet={sheet} apiRef={floor} onReady={onFloorReady} />
-      <DropZone dragging={dragging} progress={progress} />
+      {!cloudflare && <DropZone dragging={dragging} progress={progress} />}
       <Settings
         motion={motion}
         setMotion={setMotion}
@@ -200,6 +202,7 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
         spent={spent}
         lit={lit}
         busy={state.phase === "searching" ? state.query : ""}
+        motionAvailable={!cloudflare}
       />
 
       {/* The bar is pinned to the exact center of the window. The layer around it ignores the pointer,
@@ -223,6 +226,9 @@ export function SearchExperience({ icons, indexed, sheet }: { icons: { id: strin
             <YCMark size={13} />
             <span className="tabular-nums">{indexed.toLocaleString()} startups indexed</span>
           </div>
+          {cloudflare && state.phase === "done" && <div className="pointer-events-none absolute left-0 top-full mt-2.5 font-mono text-[11px] text-muted">
+            {state.data.degraded ? "Jev unavailable · estimated relevance" : state.data.decidedBy === "jev" ? `Jev scored ${state.data.judged} finalists` : "Exact name match"}
+          </div>}
         </div>
 
         {/* What the search just put on the clipboard. It says so once and goes. */}

@@ -179,6 +179,37 @@ export const IconFloor = memo(function IconFloor({ sources, cells, sheet, apiRef
 
     const drag = Matter.MouseConstraint.create(engine, { mouse, constraint: { stiffness: 0.14, render: { visible: false } } });
     Matter.Composite.add(engine.world, drag);
+    // A quick click on a floating match opens its company. Moving the pointer or
+    // dragging the body keeps the existing physics interaction.
+    let pressed: { id: number; x: number; y: number; body: number } | null = null;
+    const hitMatch = (x: number, y: number) => {
+      for (const [i, hold] of scene.holds) {
+        const at = bodies[i].position;
+        const reach = scene.size * (grown.get(i) ?? 1) / 2;
+        if (hold.arrived && Math.abs(x - at.x) <= reach && Math.abs(y - at.y) <= reach) return i;
+      }
+      return -1;
+    };
+    const onDown = (e: PointerEvent) => {
+      if (e.button !== 0) return;
+      const i = hitMatch(e.clientX, e.clientY);
+      pressed = i < 0 ? null : { id: e.pointerId, x: e.clientX, y: e.clientY, body: i };
+    };
+    const onUp = (e: PointerEvent) => {
+      const start = pressed;
+      pressed = null;
+      if (!start || e.pointerId !== start.id || Math.hypot(e.clientX - start.x, e.clientY - start.y) > 7) return;
+      if (hitMatch(e.clientX, e.clientY) !== start.body) return;
+      const link = holds.get(start.body)?.match.link;
+      if (!link) return;
+      try {
+        const url = new URL(link);
+        if (url.protocol === "https:" || url.protocol === "http:") window.open(url.href, "_blank", "noopener,noreferrer");
+      } catch { /* Invalid catalog URL. */ }
+    };
+    canvas.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
     const wheel = (mouse as unknown as { mousewheel: EventListener }).mousewheel;
     canvas.removeEventListener("wheel", wheel); // the physics mouse otherwise swallows the wheel
 
@@ -418,6 +449,9 @@ export const IconFloor = memo(function IconFloor({ sources, cells, sheet, apiRef
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("wheel", onWheel);
+      canvas.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
       overlays.destroy();
       bounds.destroy();
       tilt.stop();
