@@ -1,8 +1,8 @@
-import { judgeWithJev } from "./jev";
+import { judgeWithJev, type JevAi } from "./jev";
 
 type Env = {
   ASSETS: { fetch(input: Request | URL): Promise<Response> };
-  AI: { run(model: string, input: { text: string[]; pooling: "cls" }): Promise<{ data: number[][] }> };
+  AI: JevAi & { run(model: "@cf/baai/bge-small-en-v1.5", input: { text: string[]; pooling: "cls" }): Promise<{ data: number[][] }> };
   AI_GATEWAY_API_KEY?: string;
 };
 
@@ -105,7 +105,7 @@ async function search(request: Request, env: Env) {
       info: `${c.name}: ${c.tagline} | ${c.tags.join(", ")} | ${c.subindustry}, ${c.industry} | ${c.place} | Y Combinator ${c.batch} | ${c.description.slice(0, 420)}`,
       colors: c.colors.join(", "),
     };
-  }), batches, env.AI_GATEWAY_API_KEY)));
+  }), batches, env.AI_GATEWAY_API_KEY, env.AI)));
   const jev = chunks.length > 0 && verdicts.every((attempt) => attempt.verdict)
     ? verdicts.flatMap((attempt) => attempt.verdict!.scores)
     : null;
