@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@source "../components";
+@source "../hooks";
+@source "../cloudflare/src";
 
 @theme {
   --color-ink: #0b0b0c;

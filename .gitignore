@@ -48,3 +48,7 @@ next-env.d.ts
 # byte-identical to public/icons, which already holds all 6,241.
 /tools/yc-data/logos/
 /tools/yc-data/placeholders/
+.wrangler/
+cloudflare/dist/
+cloudflare/.dry-run/
+**/.dry-run/

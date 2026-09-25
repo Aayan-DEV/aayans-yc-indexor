@@ -8,7 +8,7 @@ const IDLE: DropProgress = { total: 0, done: 0, failed: 0, duplicates: 0, active
 const PARALLEL = 4;
 
 /** Whole-page image dropping and pasting. Each file is uploaded, indexed on the server, then handed to `onAdded`. */
-export function useImageDrop(onAdded: (entry: LibraryEntry) => void) {
+export function useImageDrop(onAdded: (entry: LibraryEntry) => void, enabled = true) {
   const [dragging, setDragging] = useState(false);
   const [progress, setProgress] = useState<DropProgress>(IDLE);
   const depth = useRef(0); // dragenter and dragleave fire for every child element, so count them instead of trusting one
@@ -40,6 +40,7 @@ export function useImageDrop(onAdded: (entry: LibraryEntry) => void) {
 
   const addFiles = useCallback(
     (files: File[]) => {
+      if (!enabled) return;
       const images = files.filter((f) => f.type.startsWith("image/"));
       if (!images.length) return;
       if (clearTimer.current) clearTimeout(clearTimer.current);
@@ -47,7 +48,7 @@ export function useImageDrop(onAdded: (entry: LibraryEntry) => void) {
       setProgress((p) => (p.active ? { ...p, total: p.total + images.length } : { ...IDLE, total: images.length, active: true }));
       pump();
     },
-    [pump],
+    [pump, enabled],
   );
 
   // When the last file lands, show the full bar briefly, then clear it.
@@ -61,6 +62,7 @@ export function useImageDrop(onAdded: (entry: LibraryEntry) => void) {
   }, [progress]);
 
   useEffect(() => {
+    if (!enabled) return;
     const hasFiles = (e: DragEvent) => Array.from(e.dataTransfer?.types ?? []).includes("Files");
     const enter = (e: DragEvent) => {
       if (!hasFiles(e)) return;
